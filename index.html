@@ -43,14 +43,27 @@
 
           <div class="project">
             <div class="row">
-              <p class="text">
-                Text goes here!
 
+              <div><h3 class="green">Path Planning</h3></div>
+              <p class="text">
+The robot uses a modified <a href="http://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html">A* algorithm</a>
+for path planning, which finds the shortest path length between two points that
+ are passed to the robot. The A* algorithm is passed the robot’s instantaneous
+ location and end location. The robot is required to stop, in order, at 5
+ different waypoints. The robot’s instantaneous position is determined using a
+ combination of the <a href="http://optitrack.com/software/OptiTrack">OptiTrack Motion Capture</a> system and motor encoder and
+ gyroscope readings. All positioning data is sent to and plotted in a LabView
+ program. The basic A* algorithm was improved by adding in diagonal path
+ planning. Diagonals are longer, so a cost function was added to a diagonal path
+ such that the robot would still plan the shortest route. Along its path, the
+ robot needs to pick up at least two colored balls.</p>
+            <div><h3 class="green">Obstacle Detection and Avoidance</h3></div>            <p class="text">Obstacles are detected using the LADAR mounted on top of the robot car. If therobot detects an object 5 times within .2 tiles of a grid point, it marks it asan obstacle in the map that is passed to the A* algorithm. After an obstacle isdetected, the A* algorithm is called again, and the robot will know to avoid theobstacle. The robot can detect objects in a 180-degree sweep. The robot’sgreatest strength is the accuracy and tuning of its obstacle detection. <br><br> Due tothe strength of the obstacle detection, little work was necessary for obstacleavoidance. For obstacle avoidance, the robot uses the front readings from theLADAR. If the robot is too close to a front wall, it will back up until it’s ina more ideal position. Obstacle avoidance is necessary so the robot doesn’tdrive into a wall while trying to pick up a ball.</p>            <div><h3 class="green">Ball Capture Design and Algorithm</h3></div>            <p class="text">The ball capturing design utilizes two lift gates, each connected to a servo. Anadvantage of this system is the large opening for the golf balls to be picked.Furthermore, it was easy to implement and adjust. Each lift gate is used tocollect all of a single-color ball.<br><br> A camera mounted to the front of the robotwas used to capture image data. The image was converted to the HSV color spaceand analyzed to detect blue and orange golf balls. The algorithm uses blobdetection to detect multiple balls at once. However, the robot will choose topick up the ball closest to the camera. A proportional control is used to steerthe robot towards the balls. The location of each ball is recorded by the robotand set to a LabView program.</p>
 
       </div>
 
       <hr>
 
+<!--
       <div class="container row">
           <nav id="social">
             <ul class="nav nav-pills pull-right">
@@ -62,6 +75,8 @@
           </nav>
           <p><a href="http://wileyjones.com" class="green vertical-align">home</a></p>
         </div>
+
+-->
 
 
 
